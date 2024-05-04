@@ -11,6 +11,8 @@ def generate_secret_key():
 class Config:
     # Secret key generation
     SECRET_KEY = generate_secret_key()
+    #CSRF protection enabled
+    WTF_CSRF_ENABLED =True
 
     # MySQL database configuration
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:root@localhost/lead_capture_db'

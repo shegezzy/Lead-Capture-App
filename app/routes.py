@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, validators
 
 class LeadForm(FlaskForm):
-    email = StringField('Email',)
+    email = StringField('Email', validators=[validators.DataRequired(), validators.Email()])
     name = StringField('Name')
     company = StringField('Company')
 
@@ -41,8 +41,6 @@ def submit():
             flash('An error occurred. Please try again later.', 'error')
 
     else:
-        # Debugging: Print form data received when validation fails
-        print("Form data received:", request.form)
         flash('Invalid form data. Please check your input.', 'error')
 
     return redirect(url_for('index'))
